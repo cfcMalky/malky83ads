@@ -97,7 +97,15 @@
   </style>
 </head>
 <body>
-  <h1>Malky83Ads Program Directory</h1>
+  <h1 style="display:none">Malky83Ads Program Directory</h1>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to Malky83Ads</h1>
+      <p class="hero-desc">
+        Discover a curated directory of the best affiliate programs, SaaS tools, and digital solutions for marketers, creators, and entrepreneurs. Easily filter by category, search for your needs, and explore hand-picked landing pages—each with a concise summary to help you find the right tool, fast.
+      </p>
+    </div>
+  </section>
   <div class="controls">
     <select id="categorySelect" class="category-select">
       <option value="all">All Categories</option>
@@ -196,5 +204,42 @@
     document.getElementById('searchInput').addEventListener('input', renderCards);
     renderCards();
   </script>
+  <style>
+    .hero-section {
+      width: 100%;
+      background: linear-gradient(135deg, #232946 60%, #7f5af0 100%);
+      padding: 48px 0 32px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    .hero-content {
+      max-width: 700px;
+      text-align: center;
+      color: #fff;
+      padding: 0 16px;
+    }
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #fff 60%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 1.18rem;
+      color: #e0e0e0;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+    @media (max-width: 700px) {
+      .hero-section { padding: 28px 0 18px 0; }
+      .hero-title { font-size: 1.4rem; }
+      .hero-desc { font-size: 1.01rem; }
+    }
+  </style>
 </body>
 </html> 
