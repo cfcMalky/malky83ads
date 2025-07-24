@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | Malky83Ads Programs</title>
-  <meta name="description" content="Tablet-style home for all affiliate programs. Tap a tile to visit each tool or offer.">
+  <title>Malky83Ads Program Directory</title>
+  <meta name="description" content="Sortable, searchable directory of affiliate programs and tools.">
   <style>
     body {
       font-family: 'Inter', Arial, sans-serif;
@@ -22,109 +22,150 @@
       letter-spacing: 1px;
       text-align: center;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
+    .search-box {
+      margin: 32px 0 16px 0;
       width: 100%;
-      max-width: 1100px;
-      margin: 40px auto 0 auto;
-      padding: 0 16px 40px 16px;
-    }
-    .tile {
-      background: linear-gradient(120deg, #393e6e 0%, #232946 100%);
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-      padding: 32px 24px 24px 24px;
-      text-align: left;
-      transition: transform 0.13s, box-shadow 0.13s;
-      cursor: pointer;
-      border: 2px solid transparent;
-      min-height: 180px;
+      max-width: 500px;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
     }
-    .tile:hover, .tile:focus {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      border-color: #7f5af0;
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1.1rem;
+      background: #232946;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       outline: none;
     }
-    .tile-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+    .program-table {
+      width: 100%;
+      max-width: 1200px;
+      border-collapse: collapse;
+      background: rgba(30, 32, 60, 0.98);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+    }
+    .program-table th, .program-table td {
+      padding: 16px 18px;
+      text-align: left;
+    }
+    .program-table th {
+      background: #232946;
       color: #7f5af0;
-      letter-spacing: 0.5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
     }
-    .tile-desc {
-      font-size: 1.05rem;
-      color: #eaeaea;
-      line-height: 1.5;
+    .program-table th.sort-asc::after {
+      content: '▲';
+      position: absolute;
+      right: 12px;
+      font-size: 0.9em;
     }
-    @media (max-width: 600px) {
+    .program-table th.sort-desc::after {
+      content: '▼';
+      position: absolute;
+      right: 12px;
+      font-size: 0.9em;
+    }
+    .program-table tr {
+      transition: background 0.13s;
+    }
+    .program-table tr:hover {
+      background: #1a1a3e;
+    }
+    .program-table td a {
+      color: #7f5af0;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .program-table td a:hover {
+      color: #00d4ff;
+    }
+    @media (max-width: 700px) {
+      .program-table th, .program-table td { padding: 10px 6px; font-size: 0.98rem; }
       h1 { font-size: 1.5rem; }
-      .grid { gap: 16px; }
-      .tile { padding: 20px 12px; }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Malky83Ads Programs</h1>
-  <div class="grid">
-    <a class="tile" href="agentx.html" tabindex="0">
-      <div class="tile-title">AgentX</div>
-      <div class="tile-desc">Build powerful AI agents and multi-agent teams in under 60 seconds. No coding required. Automate workflows with ChatGPT-4, Claude 3, Gemini. Start free trial.</div>
-    </a>
-    <a class="tile" href="chatbot.html" tabindex="0">
-      <div class="tile-title">ChatBot</div>
-      <div class="tile-desc">Build powerful AI chatbots for your website in minutes. 24/7 customer support, lead generation, sales automation. No coding required. Free 14-day trial.</div>
-    </a>
-    <a class="tile" href="coolors.html" tabindex="0">
-      <div class="tile-title">Coolors</div>
-      <div class="tile-desc">Generate beautiful color palettes instantly with Coolors. The fastest color scheme generator for designers, artists, and developers. Thousands of perfect palettes await!</div>
-    </a>
-    <a class="tile" href="getimg.html" tabindex="0">
-      <div class="tile-title">Getimg</div>
-      <div class="tile-desc">Generate stunning AI art, edit photos with AI, and unleash your creativity with Getimg.ai. Text-to-image, inpainting, outpainting, and more.</div>
-    </a>
-    <a class="tile" href="hepatoburn.html" tabindex="0">
-      <div class="tile-title">Hepatoburn</div>
-      <div class="tile-desc">Optimize liver function, boost metabolism, and accelerate fat burning with Hepatoburn. This powerful supplement supports detoxification and healthy weight management.</div>
-    </a>
-    <a class="tile" href="livechat.html" tabindex="0">
-      <div class="tile-title">LiveChat</div>
-      <div class="tile-desc">Increase online sales by 25% with LiveChat®. Professional live chat software trusted by 35,000+ companies. Free 14-day trial, no credit card required.</div>
-    </a>
-    <a class="tile" href="mitolyn.html" tabindex="0">
-      <div class="tile-title">Mitolyn</div>
-      <div class="tile-desc">Unlock peak energy, mental clarity, and cellular health with Mitolyn. This revolutionary supplement targets mitochondria for optimal vitality and anti-aging benefits.</div>
-    </a>
-    <a class="tile" href="mkdirs.html" tabindex="0">
-      <div class="tile-title">Mkdirs</div>
-      <div class="tile-desc">Build your directory website in 30 minutes with AI. Complete Next.js boilerplate with payments, CMS, blog, authentication & more. Used by 260+ makers.</div>
-    </a>
-    <a class="tile" href="pollo.html" tabindex="0">
-      <div class="tile-title">Pollo.ai</div>
-      <div class="tile-desc">Generate high-converting social media posts, ad copy, emails, and more with Pollo.ai. Automate your marketing content creation with advanced AI.</div>
-    </a>
-    <a class="tile" href="rewardful.html" tabindex="0">
-      <div class="tile-title">Rewardful</div>
-      <div class="tile-desc">Launch and manage affiliate and referral programs for your SaaS business with Rewardful. Integrate with Stripe, Paddle, and more. Grow your revenue effortlessly.</div>
-    </a>
-    <a class="tile" href="syllaby.html" tabindex="0">
-      <div class="tile-title">Syllaby</div>
-      <div class="tile-desc">Generate engaging video scripts, blog outlines, and social media content in minutes with Syllaby. Leverage AI to streamline your content workflow. Start your free trial today.</div>
-    </a>
-    <a class="tile" href="twixify.html" tabindex="0">
-      <div class="tile-title">Twixify</div>
-      <div class="tile-desc">Effortlessly edit videos, add AI effects, and generate captivating content with Twixify. Streamline your video production with intelligent automation. Start free today.</div>
-    </a>
-    <a class="tile" href="zarla.html" tabindex="0">
-      <div class="tile-title">Zarla</div>
-      <div class="tile-desc">Design professional logos, create stunning brand identities, and build your online presence with Zarla's AI-powered platform. Fast, free, and easy.</div>
-    </a>
+  <h1>Malky83Ads Program Directory</h1>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search programs, categories, or descriptions...">
   </div>
+  <table class="program-table" id="programTable">
+    <thead>
+      <tr>
+        <th data-sort="name">Program Name</th>
+        <th data-sort="category">Category</th>
+        <th data-sort="desc">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="agentx.html">AgentX</a></td><td>AI Tools / Automation</td><td>Build powerful AI agents and multi-agent teams in under 60 seconds. No coding required. Automate workflows with ChatGPT-4, Claude 3, Gemini. Start free trial.</td></tr>
+      <tr><td><a href="chatbot.html">ChatBot</a></td><td>AI Tools / Customer Support</td><td>Build powerful AI chatbots for your website in minutes. 24/7 customer support, lead generation, sales automation. No coding required. Free 14-day trial.</td></tr>
+      <tr><td><a href="coolors.html">Coolors</a></td><td>Design Tools</td><td>Generate beautiful color palettes instantly with Coolors. The fastest color scheme generator for designers, artists, and developers. Thousands of perfect palettes await!</td></tr>
+      <tr><td><a href="getimg.html">Getimg</a></td><td>AI Tools / Image Generation</td><td>Generate stunning AI art, edit photos with AI, and unleash your creativity with Getimg.ai. Text-to-image, inpainting, outpainting, and more.</td></tr>
+      <tr><td><a href="hepatoburn.html">Hepatoburn</a></td><td>Health & Wellness</td><td>Optimize liver function, boost metabolism, and accelerate fat burning with Hepatoburn. This powerful supplement supports detoxification and healthy weight management.</td></tr>
+      <tr><td><a href="livechat.html">LiveChat</a></td><td>Customer Support / Sales</td><td>Increase online sales by 25% with LiveChat®. Professional live chat software trusted by 35,000+ companies. Free 14-day trial, no credit card required.</td></tr>
+      <tr><td><a href="mitolyn.html">Mitolyn</a></td><td>Health & Wellness</td><td>Unlock peak energy, mental clarity, and cellular health with Mitolyn. This revolutionary supplement targets mitochondria for optimal vitality and anti-aging benefits.</td></tr>
+      <tr><td><a href="mkdirs.html">Mkdirs</a></td><td>Web Development / SaaS</td><td>Build your directory website in 30 minutes with AI. Complete Next.js boilerplate with payments, CMS, blog, authentication & more. Used by 260+ makers.</td></tr>
+      <tr><td><a href="rewardful.html">Rewardful</a></td><td>Marketing / Affiliate</td><td>Launch and manage affiliate and referral programs for your SaaS business with Rewardful. Integrate with Stripe, Paddle, and more. Grow your revenue effortlessly.</td></tr>
+      <tr><td><a href="syllaby.html">Syllaby</a></td><td>AI Tools / Content Creation</td><td>Generate engaging video scripts, blog outlines, and social media content in minutes with Syllaby. Leverage AI to streamline your content workflow. Start your free trial today.</td></tr>
+      <tr><td><a href="twixify.html">Twixify</a></td><td>AI Tools / Video Editing</td><td>Effortlessly edit videos, add AI effects, and generate captivating content with Twixify. Streamline your video production with intelligent automation. Start free today.</td></tr>
+      <tr><td><a href="zarla.html">Zarla</a></td><td>Design Tools / Branding</td><td>Design professional logos, create stunning brand identities, and build your online presence with Zarla's AI-powered platform. Fast, free, and easy.</td></tr>
+      <tr><td><a href="pollo.html">Pollo.ai</a></td><td>AI Tools / Marketing</td><td>Generate high-converting social media posts, ad copy, emails, and more with Pollo.ai. Automate your marketing content creation with advanced AI.</td></tr>
+      <tr><td><a href="ataraxis.html">Ataraxis Management</a></td><td>Productivity / Virtual Assistants</td><td>Hire dedicated virtual assistants from Ataraxis Management to streamline your tasks, boost productivity, and scale your business. Get expert support for administrative, marketing, and technical needs.</td></tr>
+      <tr><td><a href="fireflies.html">Fireflies.ai</a></td><td>Productivity / Meetings</td><td>Automate your meeting notes, transcriptions, and summaries with Fireflies.ai. Record, transcribe, and analyze voice conversations instantly.</td></tr>
+      <tr><td><a href="heygen.html">HeyGen</a></td><td>AI Tools / Video Creation</td><td>Generate professional videos with AI avatars and realistic voices in minutes. HeyGen simplifies video creation for marketing, training, and more.</td></tr>
+      <tr><td><a href="hyperwrite.html">HyperWrite AI</a></td><td>AI Tools / Writing</td><td>Generate high-quality content, write faster, and overcome writer's block with HyperWrite AI. Your intelligent assistant for essays, emails, articles, and more.</td></tr>
+      <tr><td><a href="mubert.html">Mubert</a></td><td>AI Tools / Music</td><td>Generate unique, royalty-free music for your projects with Mubert's AI music generator. Perfect for videos, podcasts, apps, and more.</td></tr>
+      <tr><td><a href="questmate.html">Questmate</a></td><td>Productivity / Workflow</td><td>Create powerful forms, checklists, and automated workflows with Questmate. Streamline operations, collect data, and boost efficiency without code.</td></tr>
+      <tr><td><a href="akool.html">Akool</a></td><td>AI Tools / Content Creation</td><td>Generate hyper-realistic AI avatars, videos, and images with Akool. The ultimate AI content creation platform for marketing, education, and entertainment.</td></tr>
+      <tr><td><a href="qrcodedeveloper.html">QR Code Developer</a></td><td>Marketing / QR Codes</td><td>Generate dynamic QR codes for marketing, business, and personal use. Track scans, manage campaigns, and unlock powerful analytics with QR Code Developer.</td></tr>
+    </tbody>
+  </table>
+  <script>
+    // Sorting and searching logic
+    const table = document.getElementById('programTable');
+    const headers = table.querySelectorAll('th');
+    let sortCol = null;
+    let sortAsc = true;
+    headers.forEach((th, idx) => {
+      th.addEventListener('click', () => {
+        if (sortCol === idx) sortAsc = !sortAsc;
+        else { sortCol = idx; sortAsc = true; }
+        headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+        th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+        sortTable(idx, sortAsc);
+      });
+    });
+    function sortTable(col, asc) {
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      rows.sort((a, b) => {
+        const ta = a.children[col].innerText.toLowerCase();
+        const tb = b.children[col].innerText.toLowerCase();
+        if (ta < tb) return asc ? -1 : 1;
+        if (ta > tb) return asc ? 1 : -1;
+        return 0;
+      });
+      rows.forEach(row => tbody.appendChild(row));
+    }
+    // Search logic
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const val = this.value.toLowerCase();
+      table.querySelectorAll('tbody tr').forEach(row => {
+        row.style.display = Array.from(row.children).some(td => td.innerText.toLowerCase().includes(val)) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html> 
