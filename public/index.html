@@ -47,12 +47,14 @@
     }
     .program-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 28px;
       width: 100%;
       max-width: 1200px;
       margin-bottom: 48px;
       padding: 0 12px;
+      justify-content: flex-start;
+      justify-items: start;
     }
     .program-card {
       background: rgba(30, 32, 60, 0.98);
@@ -69,6 +71,8 @@
       height: 160px;
       max-height: 180px;
       overflow: hidden;
+      width: 260px;
+      max-width: 260px;
     }
     .program-card:hover {
       transform: translateY(-4px) scale(1.03);
@@ -91,9 +95,12 @@
       color: #e0e0e0;
       margin-bottom: 0;
     }
+    @media (max-width: 1100px) {
+      .program-card { width: 48vw; max-width: 98vw; min-width: 180px; }
+    }
     @media (max-width: 700px) {
       h1 { font-size: 1.5rem; }
-      .program-card { padding: 18px 10px 14px 10px; height: 150px; max-height: 170px; }
+      .program-card { padding: 18px 10px 14px 10px; height: 150px; max-height: 170px; width: 98vw; min-width: 0; max-width: 100vw; }
       .program-title { font-size: 1.01rem; }
       .program-desc { font-size: 0.97rem; }
     }
