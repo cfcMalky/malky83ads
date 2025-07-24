@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot® - Best AI Chatbot Software | 24/7 Customer Support Automation</title>
+    <meta name="description" content="Build powerful AI chatbots for your website in minutes. 24/7 customer support, lead generation, sales automation. No coding required. Free 14-day trial.">
+    <meta name="keywords" content="AI chatbot, customer support chatbot, website chatbot, AI customer service, chatbot software, automated customer support, live chat automation, conversational AI">
+    <meta property="og:title" content="ChatBot® - Transform Customer Support with AI Chatbots">
+    <meta property="og:description" content="Instantly help customers with AI-generated responses. Get 24/7 support automation and ultra-high satisfaction rates. Start free trial today.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ChatBot® - AI-Powered Customer Support">
+    <meta name="twitter:description" content="Build AI chatbots that handle customer support 24/7. No coding required. Boost satisfaction rates with intelligent automation.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #1e40af 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.5)); }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .trust-badge {
+            margin-top: 40px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* Floating Elements */
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .benefit-content p {
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-quote {
+            font-size: 1.25rem;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .testimonial-company {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-card {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                padding: 30px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ChatBot®</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>24/7 AI Customer Support That Never Sleeps</h1>
+                    <p>Build intelligent AI chatbots for your website in minutes. Automate customer support, generate leads, and boost sales with conversational AI that provides instant, human-like responses. No coding required.</p>
+                    <a href="https://www.chatbot.com/?a=lGzVU68Hg&utm_campaign=pp_chatbot-default&utm_source=PP" class="cta-button">
+                        🚀 Start Free 14-Day Trial
+                    </a>
+                    <div class="trust-badge">
+                        ✅ No Credit Card Required • Used by 800K+ Monthly Visitors
+                    </div>
+                </div>
+                
+                <div class="floating-card">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">🤖</div>
+                    <div style="font-weight: 600;">AI Chatbot</div>
+                    <div style="color: #3b82f6; font-size: 0.9rem;">24/7 Active</div>
+                </div>
+                
+                <div class="floating-card">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">⚡</div>
+                    <div style="font-weight: 600;">Instant Setup</div>
+                    <div style="color: #8b5cf6; font-size: 0.9rem;">No Coding</div>
+                </div>
+                
+                <div class="floating-card">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">📈</div>
+                    <div style="font-weight: 600;">Lead Generation</div>
+                    <div style="color: #3b82f6; font-size: 0.9rem;">Auto Qualify</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Customer Support</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">800K+</span>
+                        <div class="stat-label">Monthly Visitors Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <div class="stat-label">Days Free Trial</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <div class="stat-label">Coding Required</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Advanced AI Chatbot Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>AI-Powered Conversations</h3>
+                        <p>Train your chatbot using your website content, knowledge base, or business data. Generate human-like responses with advanced AI that understands context and delivers accurate customer support automatically.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Drag & Drop Chatbot Builder</h3>
+                        <p>Create custom chatbot flows without coding using our intuitive visual builder. Add, move, and edit conversation blocks to design perfect customer journeys and automated workflows.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3>Multi-Channel Integration</h3>
+                        <p>Deploy your AI chatbot across websites, LiveChat, Facebook Messenger, Slack, and Shopify. One chatbot handles all channels with seamless customer experience everywhere.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Lead Generation</h3>
+                        <p>Proactively engage website visitors with personalized product recommendations. Qualify leads automatically and transfer high-intent prospects directly to your sales team in real-time.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>AI + Human Handoff</h3>
+                        <p>Combine AI efficiency with human expertise. Let AI resolve common queries automatically while seamlessly transferring complex issues to live agents when needed.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics & Optimization</h3>
+                        <p>Monitor chatbot performance with detailed analytics. Track conversation flows, identify bottlenecks, and optimize customer interactions for maximum satisfaction and conversions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">Why Choose ChatBot® for Your Business</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-content">
+                            <h4>Boost Customer Satisfaction</h4>
+                            <p>Provide instant, accurate responses 24/7. Reduce wait times and improve support quality with AI that learns from your business knowledge.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-content">
+                            <h4>Increase Sales & Conversions</h4>
+                            <p>Turn website visitors into customers with proactive engagement, product recommendations, and automated lead qualification.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏰</div>
+                        <div class="benefit-content">
+                            <h4>Save Time & Resources</h4>
+                            <p>Automate repetitive customer service tasks so your team can focus on high-value activities and complex customer needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-content">
+                            <h4>Scale Without Hiring</h4>
+                            <p>Handle unlimited conversations simultaneously. Grow your business without expanding your customer support team.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔒</div>
+                        <div class="benefit-content">
+                            <h4>GDPR Compliant & Secure</h4>
+                            <p>Built-in consent management and data protection features ensure your chatbot meets all compliance requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <div class="benefit-content">
+                            <h4>Quick Setup & Deployment</h4>
+                            <p>Get started in minutes with simple copy-paste installation. WordPress and Shopify integrations available for instant setup.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonial">
+            <div class="container">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "ChatBot is really great with customization and scalability. We use it on all of our 13 domains with +800k unique monthly visitors, and personalize the experience depending on the language."
+                    </div>
+                    <div class="testimonial-author">Rasmus Serup</div>
+                    <div class="testimonial-company">CEO of Hairlust</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Transform Customer Support with AI Today</h2>
+                <p>Join thousands of businesses using ChatBot® to provide exceptional 24/7 customer service. Start your free trial now and see the difference AI automation makes.</p>
+                <a href="https://www.chatbot.com/?a=lGzVU68Hg&utm_campaign=pp_chatbot-default&utm_source=PP" class="cta-button">
+                    ✨ Get Your Free Trial Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ChatBot® - AI Customer Support Platform. Empowering businesses with intelligent conversational AI technology.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling functionality removed since navigation was simplified
+
+        // Add scroll effect to floating cards
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-card');
+            const speed = 0.5;
+
+            parallax.forEach((element, index) => {
+                const yPos = -(scrolled * speed * (index + 1));
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and benefit items
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add dynamic background animation
+        function createBackgroundParticles() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.08';
+            document.body.appendChild(canvas);
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: Math.random() * 2 + 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = '#3b82f6';
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Initialize background particles
+        createBackgroundParticles();
+
+        // Add chatbot typing animation effect
+        function addTypingEffect() {
+            const floatingCards = document.querySelectorAll('.floating-card');
+            floatingCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animation = `float 6s ease-in-out infinite, pulse 2s ease-in-out infinite`;
+                }, index * 1000);
+            });
+        }
+
+        // Initialize typing effects
+        setTimeout(addTypingEffect, 2000);
+    </script>
+</body>
+</html>

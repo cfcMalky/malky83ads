@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveChat® - Best AI Live Chat Software | Boost Sales & Customer Support</title>
+    <meta name="description" content="Increase online sales by 25% with LiveChat®. Professional live chat software trusted by 35,000+ companies. Free 14-day trial, no credit card required.">
+    <meta name="keywords" content="live chat software, customer support chat, online sales increase, live chat app, customer service software, website chat widget, AI live chat, business communication">
+    <meta property="og:title" content="LiveChat® - The Best AI Live Chat Software for Business">
+    <meta property="og:description" content="Trusted by 35,000+ companies. Increase sales by 25% and boost customer satisfaction with professional live chat software.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LiveChat® - Professional Live Chat Software">
+    <meta name="twitter:description" content="Boost online sales and customer satisfaction with AI-powered live chat. 14-day free trial available.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffffff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(240, 147, 251, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #f093fb 50%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(102, 126, 234, 0.5)); }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(240, 147, 251, 0.4);
+        }
+
+        .trust-badge {
+            margin-top: 40px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Chat Preview */
+        .chat-preview {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .agent-info h4 {
+            color: #1e293b;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .agent-status {
+            color: #10b981;
+            font-size: 0.8rem;
+        }
+
+        .chat-message {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0px); }
+            50% { transform: translateY(-50%) translateX(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ffffff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(240, 147, 251, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #f093fb;
+            font-weight: 600;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #f093fb);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .benefit-card p {
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-text {
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-rating {
+            color: #fbbf24;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-author {
+            color: #f093fb;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(240, 147, 251, 0.2) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, #ffffff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-preview {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .features-grid,
+            .benefits-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .benefit-card,
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">LiveChat®</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Boost Sales by 25% with Professional Live Chat</h1>
+                    <p>The best AI-powered live chat software trusted by 35,000+ companies worldwide. Increase customer satisfaction, automate support, and drive more conversions with real-time website chat.</p>
+                    <a href="https://www.livechat.com/?a=lGzVU68Hg&utm_campaign=pp_livechat-default&utm_source=PP" class="cta-button">
+                        💬 Start Free 14-Day Trial
+                    </a>
+                    <div class="trust-badge">
+                        ✅ No Credit Card Required • Trusted by 35,000+ Companies
+                    </div>
+                </div>
+                
+                <div class="chat-preview">
+                    <div class="chat-header">
+                        <div class="agent-avatar">JA</div>
+                        <div class="agent-info">
+                            <h4>Jane Anderson</h4>
+                            <div class="agent-status">● Online</div>
+                        </div>
+                    </div>
+                    <div class="chat-message">
+                        Hi! 👋 How can I help you today?
+                    </div>
+                    <div class="chat-message">
+                        I see you're looking at our premium plans. Would you like me to show you a quick demo?
+                    </div>
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">35K+</span>
+                        <div class="stat-label">Companies Trust LiveChat®</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25%</span>
+                        <div class="stat-label">Average Sales Increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30%</span>
+                        <div class="stat-label">Higher Conversion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Expert Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Advanced Live Chat Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Increase Online Sales</h3>
+                        <p>Start conversations with pre-set messages, recommend products, and guide visitors to ideal purchases. Experience a <span class="highlight">25% increase in average order value</span> with proactive chat engagement.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">😊</div>
+                        <h3>Improve Customer Satisfaction</h3>
+                        <p>Handle all customer messages in one unified platform with instant access to customer info. Deliver top-notch service and achieve <span class="highlight">30% higher conversion rates</span> with personalized support.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Automation</h3>
+                        <p>Use intelligent chatbots to handle repetitive tasks and common questions automatically. Let AI manage routine inquiries while your team focuses on delivering exceptional customer experiences.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>AI Copilot Assistant</h3>
+                        <p>Empower your agents with real-time AI insights, text enhancement, tag suggestions, and chat summaries. Respond faster and with confidence using seamless AI customer service backing.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3>200+ Integrations</h3>
+                        <p>Connect with WordPress, Shopify, Mailchimp, and 200+ other tools. Create a tailored solution that operates seamlessly in the background while managing all the details.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Get clear insights with comprehensive live chat reports including sales tracking, agent performance, campaign conversion, and customer satisfaction metrics - no data expert needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">Why Choose LiveChat® for Your Business</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Proven ROI</h3>
+                        <p>Companies see 25% increase in average order value and 30% higher conversion rates after implementing LiveChat®. Turn website visitors into paying customers.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Lightning Fast Setup</h3>
+                        <p>Get started in minutes with easy installation. Preview LiveChat® on your homepage with one click and customize it to match your brand perfectly.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>Smart Targeting</h3>
+                        <p>Engage visitors at the perfect moment with automated campaigns. Send the right message to the right customer at the right time for maximum impact.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📱</div>
+                        <h3>Mobile-First Design</h3>
+                        <p>Handle customer support on the go with mobile apps. Close sales and manage Instagram and other channels all from one reliable, easy-to-use platform.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🏆</div>
+                        <h3>Award-Winning Support</h3>
+                        <p>Get 24/7/365 support from LiveChat® Product Experts. Professional assistance whenever you need it to drive your business growth forward.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔒</div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-level security with GDPR compliance and SOC 2 certification. Your customer data is protected with the highest industry standards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">Trusted by Thousands of Businesses</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"We saw a 25% increase in our sales with the automations/campaigns within live chat. Great app that just works without requiring customer contact information first."</div>
+                        <div class="testimonial-author">E-commerce Business Owner</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"LOVE this app! I've been able to help so many people live on the page. Really helped boost sales and engagement significantly."</div>
+                        <div class="testimonial-author">Online Store Manager</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"The app is great!!! I can literally close sales on the go and handle Instagram and other channels all from ONE PLACE! Super reliable and really boosts conversions!"</div>
+                        <div class="testimonial-author">Digital Marketing Agency</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"Integrating LiveChat® into our e-commerce website has been one of the best decisions we've made. Excellent support and powerful features worth every penny."</div>
+                        <div class="testimonial-author">E-commerce Director</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"I have been using Live Chat for 7 years now. Great stable platform, lots of customization options and excellent customer support. Highly recommended."</div>
+                        <div class="testimonial-author">Long-term Customer</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"Our 'go-to' chat app since 2017. LiveChat® does everything we need it to do and then some. Sleek interface with lots of features and instant support."</div>
+                        <div class="testimonial-author">Business Owner Since 2017</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Ready to Boost Your Sales Today?</h2>
+                <p>Join 35,000+ companies using LiveChat® to increase sales, improve customer satisfaction, and automate support. Start your free trial now and see the difference professional live chat makes.</p>
+                <a href="https://www.livechat.com/?a=lGzVU68Hg&utm_campaign=pp_livechat-default&utm_source=PP" class="cta-button">
+                    ✨ Start Your Free Trial Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LiveChat® - Professional Live Chat Software. Empowering businesses worldwide with exceptional customer communication.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chat preview animation
+        const chatMessages = [
+            "Hi! 👋 How can I help you today?",
+            "I see you're looking at our premium plans. Would you like me to show you a quick demo?",
+            "Our customers typically see a 25% increase in sales within the first month!",
+            "Would you like to schedule a free consultation with our team?"
+        ];
+        
+        let currentMessageIndex = 0;
+        const chatContainer = document.querySelector('.chat-preview');
+        
+        function addChatMessage() {
+            if (!chatContainer) return;
+            
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message';
+            messageElement.textContent = chatMessages[currentMessageIndex];
+            messageElement.style.opacity = '0';
+            messageElement.style.transform = 'translateY(10px)';
+            
+            // Remove typing indicator
+            const typingIndicator = chatContainer.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+            
+            chatContainer.appendChild(messageElement);
+            
+            // Animate in
+            setTimeout(() => {
+                messageElement.style.transition = 'all 0.3s ease';
+                messageElement.style.opacity = '1';
+                messageElement.style.transform = 'translateY(0)';
+            }, 100);
+            
+            currentMessageIndex = (currentMessageIndex + 1) % chatMessages.length;
+            
+            // Add typing indicator for next message
+            setTimeout(() => {
+                const typingElement = document.createElement('div');
+                typingElement.className = 'typing-indicator';
+                typingElement.innerHTML = `
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                `;
+                chatContainer.appendChild(typingElement);
+            }, 2000);
+        }
+        
+        // Start chat animation
+        if (chatContainer) {
+            setInterval(addChatMessage, 8000);
+        }
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.feature-card, .benefit-card, .testimonial-card, .stat-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Add dynamic background particles
+        function createChatParticles() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    size: Math.random() * 2 + 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = '#f093fb';
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Initialize background particles
+        createChatParticles();
+
+        // Add hover effects to stats
+        document.querySelectorAll('.stat-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add pulsing effect to CTA buttons
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            setInterval(() => {
+                button.style.boxShadow = '0 15px 50px rgba(240, 147, 251, 0.6)';
+                setTimeout(() => {
+                    button.style.boxShadow = '0 10px 30px rgba(240, 147, 251, 0.3)';
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

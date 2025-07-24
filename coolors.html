@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coolors® - Super Fast Color Palette Generator | Create Perfect Color Schemes</title>
+    <meta name="description" content="Generate beautiful color palettes instantly with Coolors. The fastest color scheme generator for designers, artists, and developers. Thousands of perfect palettes await!">
+    <meta name="keywords" content="color palette generator, color schemes, design colors, hex colors, color picker, gradient generator, color harmony, design tools, web colors, UI colors">
+    <meta property="og:title" content="Coolors® - The Super Fast Color Palette Generator">
+    <meta property="og:description" content="Create the perfect color palette or get inspired by thousands of beautiful color schemes. The ultimate tool for designers and creatives.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Coolors® - Color Palette Generator">
+    <meta name="twitter:description" content="Generate stunning color palettes instantly. Perfect for designers, artists, and developers. Start creating beautiful colors now!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #ffeaa7 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            animation: colorPulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes colorPulse {
+            from { 
+                text-shadow: 0 4px 30px rgba(255,107,107,0.6), 0 0 50px rgba(255,107,107,0.3);
+            }
+            to { 
+                text-shadow: 0 4px 30px rgba(78,205,196,0.6), 0 0 50px rgba(78,205,196,0.3);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            text-shadow: none;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+        }
+
+        /* Color Palette Preview */
+        .palette-preview {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 60px auto 0;
+            max-width: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: paletteShift 8s ease-in-out infinite;
+        }
+
+        .color-swatch {
+            height: 80px;
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-swatch:hover {
+            transform: scaleY(1.1);
+            z-index: 10;
+        }
+
+        .color-code {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        @keyframes paletteShift {
+            0% { filter: hue-rotate(0deg); }
+            25% { filter: hue-rotate(90deg); }
+            50% { filter: hue-rotate(180deg); }
+            75% { filter: hue-rotate(270deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        /* Floating Color Elements */
+        .floating-color {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            animation: floatColor 8s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .floating-color:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            background: #ff6b6b;
+            animation-delay: 0s;
+        }
+
+        .floating-color:nth-child(2) {
+            top: 25%;
+            right: 12%;
+            background: #4ecdc4;
+            animation-delay: 1s;
+        }
+
+        .floating-color:nth-child(3) {
+            bottom: 35%;
+            left: 10%;
+            background: #45b7d1;
+            animation-delay: 2s;
+        }
+
+        .floating-color:nth-child(4) {
+            bottom: 25%;
+            right: 8%;
+            background: #96ceb4;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatColor {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(180deg); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .feature-card p {
+            color: #ffffff;
+            line-height: 1.6;
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Tools Section */
+        .tools {
+            padding: 120px 0;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tool-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .tool-emoji {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .tool-item h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .tool-item p {
+            color: #ffffff;
+            opacity: 0.9;
+            line-height: 1.5;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
+        }
+
+        .final-cta h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            color: #ffffff;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-color {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .palette-preview {
+                margin-top: 40px;
+                height: 60px;
+            }
+            
+            .color-swatch {
+                height: 60px;
+            }
+            
+            .features-grid,
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .tool-item {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Coolors</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>The Super Fast Color Palette Generator</h1>
+                    <p>Create the perfect color palette or get inspired by thousands of beautiful color schemes. Generate stunning color combinations instantly for your design projects, websites, and creative work.</p>
+                    <a href="https://coolors.co/?ref=68818aec37b956000b1e8d10" class="cta-button">
+                        🎨 Start Creating Colors
+                    </a>
+                </div>
+                
+                <div class="palette-preview">
+                    <div class="color-swatch" style="background: #ff6b6b;">
+                        <div class="color-code">#FF6B6B</div>
+                    </div>
+                    <div class="color-swatch" style="background: #4ecdc4;">
+                        <div class="color-code">#4ECDC4</div>
+                    </div>
+                    <div class="color-swatch" style="background: #45b7d1;">
+                        <div class="color-code">#45B7D1</div>
+                    </div>
+                    <div class="color-swatch" style="background: #96ceb4;">
+                        <div class="color-code">#96CEB4</div>
+                    </div>
+                    <div class="color-swatch" style="background: #ffeaa7;">
+                        <div class="color-code">#FFEAA7</div>
+                    </div>
+                </div>
+                
+                <div class="floating-color"></div>
+                <div class="floating-color"></div>
+                <div class="floating-color"></div>
+                <div class="floating-color"></div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <div class="stat-label">Color Combinations</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1000s</span>
+                        <div class="stat-label">Beautiful Palettes</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">⚡</span>
+                        <div class="stat-label">Super Fast Generator</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🎨</span>
+                        <div class="stat-label">Creative Freedom</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Powerful Color Design Tools</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Lightning Fast Generation</h3>
+                        <p>Generate beautiful color palettes instantly with just one click. Our super-fast algorithm creates harmonious color combinations in milliseconds, perfect for rapid design iteration.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Smart Color Harmony</h3>
+                        <p>Advanced color theory algorithms ensure every palette is perfectly balanced. Create complementary, triadic, and analogous color schemes that work beautifully together.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Palette Visualizer</h3>
+                        <p>See your color palettes applied to real designs instantly. Check how your colors look on websites, UI elements, and design mockups before committing to your scheme.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Color Blindness Check</h3>
+                        <p>Ensure your color choices are accessible to everyone. Built-in color blindness simulation helps you create inclusive designs that work for all users.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Export & Share</h3>
+                        <p>Export your perfect palettes in multiple formats - HEX, RGB, HSL, and more. Share your color schemes or save them for future projects with ease.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Trending Color Palettes</h3>
+                        <p>Discover thousands of hand-picked color palettes from the design community. Get inspired by trending color combinations and popular design schemes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tools">
+            <div class="container">
+                <h2 class="section-title">Complete Color Toolkit</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <span class="tool-emoji">🌈</span>
+                        <h4>Color Picker</h4>
+                        <p>Extract colors from images and create custom palettes from your inspiration sources.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <span class="tool-emoji">🎛️</span>
+                        <h4>Gradient Generator</h4>
+                        <p>Create smooth color gradients and transitions for modern web design projects.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <span class="tool-emoji">🔍</span>
+                        <h4>Contrast Checker</h4>
+                        <p>Ensure your color combinations meet WCAG accessibility guidelines for text readability.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <span class="tool-emoji">📐</span>
+                        <h4>Color Converter</h4>
+                        <p>Convert between HEX, RGB, HSL, and other color formats instantly for any project.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <span class="tool-emoji">💾</span>
+                        <h4>Palette Library</h4>
+                        <p>Save and organize your favorite color palettes in your personal design library.</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <span class="tool-emoji">🎪</span>
+                        <h4>Color Trends</h4>
+                        <p>Stay updated with the latest color trends and seasonal palette collections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Start Creating Beautiful Colors Today</h2>
+                <p>Join thousands of designers, artists, and creatives who use Coolors to bring their projects to life with perfect color palettes. Generate your first palette now!</p>
+                <a href="https://coolors.co/?ref=68818aec37b956000b1e8d10" class="cta-button">
+                    ✨ Generate Your Palette Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Coolors® - The Super Fast Color Palette Generator. Empowering designers worldwide with beautiful color combinations.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic color animation for palette preview
+        const colorSwatches = document.querySelectorAll('.color-swatch');
+        const colors = [
+            ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'],
+            ['#a29bfe', '#fd79a8', '#fdcb6e', '#6c5ce7', '#74b9ff'],
+            ['#00b894', '#00cec9', '#0984e3', '#6c5ce7', '#fd79a8'],
+            ['#e17055', '#fdcb6e', '#00b894', '#74b9ff', '#a29bfe'],
+            ['#fd79a8', '#fdcb6e', '#00cec9', '#74b9ff', '#6c5ce7']
+        ];
+        
+        let currentPaletteIndex = 0;
+        
+        function updatePalette() {
+            const currentColors = colors[currentPaletteIndex];
+            colorSwatches.forEach((swatch, index) => {
+                if (currentColors[index]) {
+                    swatch.style.background = currentColors[index];
+                    swatch.querySelector('.color-code').textContent = currentColors[index].toUpperCase();
+                }
+            });
+            currentPaletteIndex = (currentPaletteIndex + 1) % colors.length;
+        }
+        
+        // Update palette every 4 seconds
+        setInterval(updatePalette, 4000);
+        
+        // Add click handlers to color swatches
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const colorCode = swatch.querySelector('.color-code').textContent;
+                navigator.clipboard.writeText(colorCode).then(() => {
+                    swatch.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        swatch.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.feature-card, .tool-item, .stat-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Add dynamic background particles
+        function createColorParticles() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const particles = [];
+            const particleColors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
+            const particleCount = 25;
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    size: Math.random() * 3 + 1,
+                    color: particleColors[Math.floor(Math.random() * particleColors.length)]
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Initialize color particles
+        createColorParticles();
+
+        // Add random color shifts to floating elements
+        const floatingColors = document.querySelectorAll('.floating-color');
+        const colorPool = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#a29bfe', '#fd79a8', '#fdcb6e'];
+        
+        function randomizeFloatingColors() {
+            floatingColors.forEach(element => {
+                const randomColor = colorPool[Math.floor(Math.random() * colorPool.length)];
+                element.style.background = randomColor;
+            });
+        }
+        
+        // Change floating colors every 3 seconds
+        setInterval(randomizeFloatingColors, 3000);
+    </script>
+</body>
+</html>

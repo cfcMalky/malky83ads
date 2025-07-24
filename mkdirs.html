@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mkdirs® - The Best AI Directory Boilerplate | Launch in 30 Minutes</title>
+    <meta name="description" content="Build your directory website in 30 minutes with AI. Complete Next.js boilerplate with payments, CMS, blog, authentication & more. Used by 260+ makers.">
+    <meta name="keywords" content="directory website, Next.js boilerplate, directory template, AI directory, website builder, SaaS boilerplate, indie maker tools">
+    <meta property="og:title" content="Mkdirs® - The Best AI Directory Boilerplate">
+    <meta property="og:description" content="Launch your directory website in 30 minutes. Complete boilerplate with AI, payments, CMS, and everything you need.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mkdirs® - Build Directory Websites Fast">
+    <meta name="twitter:description" content="260+ makers ship faster with Mkdirs. Launch your directory in minutes with AI-powered features.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.5)); }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .trust-badge {
+            margin-top: 40px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Code Preview */
+        .code-preview {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot:nth-child(1) { background: #ef4444; }
+        .code-dot:nth-child(2) { background: #f59e0b; }
+        .code-dot:nth-child(3) { background: #10b981; }
+
+        .code-title {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .code-line {
+            color: #e2e8f0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: typeIn 0.5s ease forwards;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 0.5s; }
+        .code-line:nth-child(2) { animation-delay: 1s; }
+        .code-line:nth-child(3) { animation-delay: 1.5s; }
+        .code-line:nth-child(4) { animation-delay: 2s; }
+
+        @keyframes typeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .keyword { color: #8b5cf6; }
+        .string { color: #10b981; }
+        .comment { color: #6b7280; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0px); }
+            50% { transform: translateY(-50%) translateX(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+        }
+
+        .tech-card h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .tech-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-text {
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-rating {
+            color: #fbbf24;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-author {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-badge {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .price-subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            color: #e2e8f0;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .code-preview {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0 80px;
+            }
+            
+            .features-grid,
+            .tech-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card,
+            .tech-card,
+            .testimonial-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Mkdirs®</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Launch Your Directory in 30 Minutes with AI</h1>
+                    <p>The best directory boilerplate, packed with AI, Listings, Payment, Submission, CMS, Blog, Authentication, Newsletter, SEO, Themes and more. Trusted by 260+ makers to ship faster.</p>
+                    <a href="https://mkdirs.com/?via=malky83" class="cta-button">
+                        🚀 Get Mkdirs Now - $99
+                    </a>
+                    <div class="trust-badge">
+                        ✅ Lifetime Updates • Used by 260+ Makers • 3 GitHub Repositories
+                    </div>
+                </div>
+                
+                <div class="code-preview">
+                    <div class="code-header">
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                        <div class="code-dot"></div>
+                        <div class="code-title">mkdirs-setup.js</div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line"><span class="comment">// Launch your directory in minutes</span></div>
+                        <div class="code-line"><span class="keyword">npm</span> <span class="string">create mkdirs-app</span></div>
+                        <div class="code-line"><span class="keyword">cd</span> my-directory</div>
+                        <div class="code-line"><span class="keyword">npm</span> <span class="string">run dev</span></div>
+                        <div class="code-line"><span class="comment">// ✨ Your directory is live!</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">260+</span>
+                        <div class="stat-label">Makers Ship Faster</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30min</span>
+                        <div class="stat-label">Setup Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <div class="stat-label">Complete Codebases</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Everything You Need to Build & Monetize</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Features</h3>
+                        <p>Built-in AI autofill for submissions, intelligent search, and automated content generation. <span class="highlight">Save hours of manual work</span> with smart automation that handles the heavy lifting.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Built-in Monetization</h3>
+                        <p>Stripe integration for paid submissions, affiliate links, sponsored ads, and premium listings. <span class="highlight">Start earning from day one</span> with proven revenue streams.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Complete CMS & Blog</h3>
+                        <p>Sanity CMS integration for easy content management, rich text editor, image uploads, and professional blog system with categories and SEO optimization.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h3>Secure Authentication</h3>
+                        <p>Auth.js powered authentication with email verification, password reset, social login options, and user management dashboard - all production-ready.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Beautiful UI Components</h3>
+                        <p>Shadcn UI components, dark mode support, responsive design, and customizable themes. <span class="highlight">Launch with a professional look</span> that converts visitors.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>SEO & Analytics Ready</h3>
+                        <p>Built-in SEO metadata, sitemap generation, OpenGraph tags, and analytics integration. Get discovered and track your growth from launch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-stack">
+            <div class="container">
+                <h2 class="section-title">Industry-Standard Tech Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">⚛️</div>
+                        <h4>Next.js</h4>
+                        <p>Full stack React framework for production</p>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">🎨</div>
+                        <h4>Tailwind CSS</h4>
+                        <p>Rapid UI development framework</p>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">🏗️</div>
+                        <h4>Sanity CMS</h4>
+                        <p>Headless CMS for modern websites</p>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">💳</div>
+                        <h4>Stripe</h4>
+                        <p>Secure online payment processing</p>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">🔒</div>
+                        <h4>Auth.js</h4>
+                        <p>Authentication library for Next.js</p>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-icon">🤖</div>
+                        <h4>Vercel AI SDK</h4>
+                        <p>AI toolkit for TypeScript</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">Loved by Indie Makers Worldwide</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"Out of all the repos, this is by the best coded and documented. I already have this deployed with my stripe and sanity account. Well done!"</div>
+                        <div class="testimonial-author">thestupiddeveloper - Entrepreneur & Indie Maker</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"I bought Mkdirs template last month, and I'm ready to build a directory website. I think this template will definitely save me months of work!"</div>
+                        <div class="testimonial-author">Banboo - Entrepreneur & Yoga Instructor</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"Built my AI tools directory in 2 days using the Mkdirs template. It has made the process super fast, and it's very easy to customize. Highly recommended!"</div>
+                        <div class="testimonial-author">Sylwair - Indie Maker & Founder of aifinder.site</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"I don't know React or Next.js, but I finished building a directory website in just 2 hours. This template is so hassle-free!"</div>
+                        <div class="testimonial-author">Yihui - Entrepreneur & Founder of nuxtbase.site</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"The setup process is straightforward and everything just works. As a startup, we need to move fast and stay ahead. Mkdirs template is so powerful."</div>
+                        <div class="testimonial-author">LuoSays - Entrepreneur & Founder of heyform.net</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">★★★★★</div>
+                        <div class="testimonial-text">"By far the best boilerplate I have used - so easy to set up and beautifully designed. The code is so clean and it was such a pleasure to navigate through."</div>
+                        <div class="testimonial-author">Annedevj - Entrepreneur & Indie Maker</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <h2 class="section-title">Launch Today for Just $99</h2>
+                <div class="pricing-card">
+                    <div class="pricing-badge">🎁 Special Gift: 50% off (limited time)</div>
+                    <div class="price">$99</div>
+                    <div class="price-subtitle">Pay once, Build unlimited directory websites</div>
+                    
+                    <ul class="features-list">
+                        <li>Complete Next.js boilerplate for directory</li>
+                        <li>Seamless Stripe payments and webhooks</li>
+                        <li>Secure authentication and authorization</li>
+                        <li>Sleek UI components and responsive design</li>
+                        <li>Feature-rich blog system and built-in CMS</li>
+                        <li>Auto-generated sitemap and OG metadata</li>
+                        <li>Showcase your products on Mkdirs for free</li>
+                        <li>Unlimited personal and commercial projects</li>
+                        <li>Technical support via email and Discord 🛟</li>
+                        <li>Access to 3 official Github repositories 🎁</li>
+                        <li>Lifetime updates with no extra cost 🔥</li>
+                    </ul>
+                    
+                    <a href="https://mkdirs.com/?via=malky83" class="cta-button">
+                        ✨ Get Mkdirs Now - $99
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Ready to Ship Your Directory?</h2>
+                <p>
