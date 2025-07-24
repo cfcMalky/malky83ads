@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malky83Ads Program Directory</title>
-  <meta name="description" content="Sortable, searchable directory of affiliate programs and tools.">
+  <meta name="description" content="Filterable, responsive directory of affiliate programs and tools.">
   <style>
     body {
       font-family: 'Inter', Arial, sans-serif;
@@ -22,15 +22,17 @@
       letter-spacing: 1px;
       text-align: center;
     }
-    .search-box {
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
       margin: 32px 0 16px 0;
       width: 100%;
-      max-width: 500px;
-      display: flex;
+      max-width: 700px;
       justify-content: center;
+      align-items: center;
     }
-    .search-box input {
-      width: 100%;
+    .search-box input, .category-select {
       padding: 12px 16px;
       border-radius: 8px;
       border: none;
@@ -40,292 +42,159 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       outline: none;
     }
-    .program-table {
+    .category-select {
+      min-width: 180px;
+    }
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
       width: 100%;
       max-width: 1200px;
-      border-collapse: collapse;
+      margin-bottom: 48px;
+      padding: 0 12px;
+    }
+    .program-card {
       background: rgba(30, 32, 60, 0.98);
       border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 48px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-    }
-    .program-table th, .program-table td {
-      padding: 16px 18px;
-      text-align: left;
-    }
-    .program-table th {
-      background: #232946;
-      color: #7f5af0;
-      font-size: 1.1rem;
+      padding: 28px 22px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.13s, box-shadow 0.13s;
       cursor: pointer;
-      user-select: none;
-      position: relative;
+      border: 1px solid transparent;
+      min-height: 140px;
     }
-    .program-table th.sort-asc::after {
-      content: '▲';
-      position: absolute;
-      right: 12px;
-      font-size: 0.9em;
+    .program-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(0,212,255,0.13);
+      border: 1px solid #7f5af0;
     }
-    .program-table th.sort-desc::after {
-      content: '▼';
-      position: absolute;
-      right: 12px;
-      font-size: 0.9em;
-    }
-    .program-table tr {
-      transition: background 0.13s;
-    }
-    .program-table tr:hover {
-      background: #1a1a3e;
-    }
-    .program-table td a {
+    .program-title {
+      font-size: 1.18rem;
+      font-weight: 700;
       color: #7f5af0;
+      margin-bottom: 10px;
       text-decoration: underline;
-      font-weight: 600;
       transition: color 0.2s;
     }
-    .program-table td a:hover {
+    .program-card:hover .program-title {
       color: #00d4ff;
     }
+    .program-desc {
+      font-size: 1.01rem;
+      color: #e0e0e0;
+      margin-bottom: 0;
+    }
     @media (max-width: 700px) {
-      .program-table th, .program-table td { padding: 10px 6px; font-size: 0.98rem; }
       h1 { font-size: 1.5rem; }
+      .program-card { padding: 18px 10px 14px 10px; }
+      .program-title { font-size: 1.01rem; }
+      .program-desc { font-size: 0.97rem; }
     }
   </style>
 </head>
 <body>
   <h1>Malky83Ads Program Directory</h1>
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search programs, categories, or descriptions...">
+  <div class="controls">
+    <select id="categorySelect" class="category-select">
+      <option value="all">All Categories</option>
+    </select>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search programs or descriptions...">
+    </div>
   </div>
-  <table class="program-table" id="programTable">
-    <thead>
-      <tr>
-        <th data-sort="name">Program Name</th>
-        <th data-sort="category">Category</th>
-        <th data-sort="desc">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><a href="agentx.html">AgentX</a></td><td>AI Tools / Automation</td><td>Build powerful AI agents and multi-agent teams in under 60 seconds. No coding required. Automate workflows with ChatGPT-4, Claude 3, Gemini. Start free trial.</td></tr>
-      <tr><td><a href="chatbot.html">ChatBot</a></td><td>AI Tools / Customer Support</td><td>Build powerful AI chatbots for your website in minutes. 24/7 customer support, lead generation, sales automation. No coding required. Free 14-day trial.</td></tr>
-      <tr><td><a href="coolors.html">Coolors</a></td><td>Design Tools</td><td>Generate beautiful color palettes instantly with Coolors. The fastest color scheme generator for designers, artists, and developers. Thousands of perfect palettes await!</td></tr>
-      <tr><td><a href="getimg.html">Getimg</a></td><td>AI Tools / Image Generation</td><td>Generate stunning AI art, edit photos with AI, and unleash your creativity with Getimg.ai. Text-to-image, inpainting, outpainting, and more.</td></tr>
-      <tr><td><a href="hepatoburn.html">Hepatoburn</a></td><td>Health & Wellness</td><td>Optimize liver function, boost metabolism, and accelerate fat burning with Hepatoburn. This powerful supplement supports detoxification and healthy weight management.</td></tr>
-      <tr><td><a href="livechat.html">LiveChat</a></td><td>Customer Support / Sales</td><td>Increase online sales by 25% with LiveChat®. Professional live chat software trusted by 35,000+ companies. Free 14-day trial, no credit card required.</td></tr>
-      <tr><td><a href="mitolyn.html">Mitolyn</a></td><td>Health & Wellness</td><td>Unlock peak energy, mental clarity, and cellular health with Mitolyn. This revolutionary supplement targets mitochondria for optimal vitality and anti-aging benefits.</td></tr>
-      <tr><td><a href="mkdirs.html">Mkdirs</a></td><td>Web Development / SaaS</td><td>Build your directory website in 30 minutes with AI. Complete Next.js boilerplate with payments, CMS, blog, authentication & more. Used by 260+ makers.</td></tr>
-      <tr><td><a href="rewardful.html">Rewardful</a></td><td>Marketing / Affiliate</td><td>Launch and manage affiliate and referral programs for your SaaS business with Rewardful. Integrate with Stripe, Paddle, and more. Grow your revenue effortlessly.</td></tr>
-      <tr><td><a href="syllaby.html">Syllaby</a></td><td>AI Tools / Content Creation</td><td>Generate engaging video scripts, blog outlines, and social media content in minutes with Syllaby. Leverage AI to streamline your content workflow. Start your free trial today.</td></tr>
-      <tr><td><a href="twixify.html">Twixify</a></td><td>AI Tools / Video Editing</td><td>Effortlessly edit videos, add AI effects, and generate captivating content with Twixify. Streamline your video production with intelligent automation. Start free today.</td></tr>
-      <tr><td><a href="zarla.html">Zarla</a></td><td>Design Tools / Branding</td><td>Design professional logos, create stunning brand identities, and build your online presence with Zarla's AI-powered platform. Fast, free, and easy.</td></tr>
-      <tr><td><a href="pollo.html">Pollo.ai</a></td><td>AI Tools / Marketing</td><td>Generate high-converting social media posts, ad copy, emails, and more with Pollo.ai. Automate your marketing content creation with advanced AI.</td></tr>
-      <tr><td><a href="ataraxis.html">Ataraxis Management</a></td><td>Productivity / Virtual Assistants</td><td>Hire dedicated virtual assistants from Ataraxis Management to streamline your tasks, boost productivity, and scale your business. Get expert support for administrative, marketing, and technical needs.</td></tr>
-      <tr><td><a href="fireflies.html">Fireflies.ai</a></td><td>Productivity / Meetings</td><td>Automate your meeting notes, transcriptions, and summaries with Fireflies.ai. Record, transcribe, and analyze voice conversations instantly.</td></tr>
-      <tr><td><a href="heygen.html">HeyGen</a></td><td>AI Tools / Video Creation</td><td>Generate professional videos with AI avatars and realistic voices in minutes. HeyGen simplifies video creation for marketing, training, and more.</td></tr>
-      <tr><td><a href="hyperwrite.html">HyperWrite AI</a></td><td>AI Tools / Writing</td><td>Generate high-quality content, write faster, and overcome writer's block with HyperWrite AI. Your intelligent assistant for essays, emails, articles, and more.</td></tr>
-      <tr><td><a href="mubert.html">Mubert</a></td><td>AI Tools / Music</td><td>Generate unique, royalty-free music for your projects with Mubert's AI music generator. Perfect for videos, podcasts, apps, and more.</td></tr>
-      <tr><td><a href="questmate.html">Questmate</a></td><td>Productivity / Workflow</td><td>Create powerful forms, checklists, and automated workflows with Questmate. Streamline operations, collect data, and boost efficiency without code.</td></tr>
-      <tr><td><a href="akool.html">Akool</a></td><td>AI Tools / Content Creation</td><td>Generate hyper-realistic AI avatars, videos, and images with Akool. The ultimate AI content creation platform for marketing, education, and entertainment.</td></tr>
-      <tr><td><a href="qrcodedeveloper.html">QR Code Developer</a></td><td>Marketing / QR Codes</td><td>Generate dynamic QR codes for marketing, business, and personal use. Track scans, manage campaigns, and unlock powerful analytics with QR Code Developer.</td></tr>
-      <tr>
-        <td><a href="algomo.html">Algomo</a></td>
-        <td>AI Tools / Customer Support</td>
-        <td>Automate customer support, generate leads, and enhance user experience with Algomo's AI chatbot platform. Deploy intelligent chatbots across all channels.</td>
-      </tr>
-      <tr>
-        <td><a href="easymonthend.html">Easy Month End</a></td>
-        <td>Finance / Bookkeeping</td>
-        <td>Streamline your month-end close process, simplify bookkeeping, and gain financial clarity with Easy Month End. Designed for small businesses and accountants.</td>
-      </tr>
-      <tr>
-        <td><a href="emaillistverify.html">Email List Verify</a></td>
-        <td>Email Marketing / Deliverability</td>
-        <td>Improve your email marketing ROI by cleaning your email lists with Email List Verify. Remove invalid, bounced, and spam trap emails to boost deliverability and sender reputation.</td>
-      </tr>
-      <tr>
-        <td><a href="getreditus.html">GetReditus</a></td>
-        <td>Marketing / Affiliate</td>
-        <td>Launch and scale your affiliate and referral programs with ease using GetReditus. Automate tracking, payouts, and partner management to boost your revenue.</td>
-      </tr>
-      <tr>
-        <td><a href="grapeleads.html">GrapeLeads</a></td>
-        <td>AI Tools / Lead Generation</td>
-        <td>Discover, engage, and convert leads effortlessly with GrapeLeads. Leverage AI for targeted lead generation, automated outreach, and boosted sales.</td>
-      </tr>
-      <tr>
-        <td><a href="icompass.html">iCompass</a></td>
-        <td>AI Tools / Market Intelligence</td>
-        <td>Gain competitive advantage with iCompass's AI-powered market intelligence. Analyze trends, track competitors, and optimize your business strategy effortlessly.</td>
-      </tr>
-      <tr>
-        <td><a href="insightful.html">Insightful</a></td>
-        <td>Productivity / Team Management</td>
-        <td>Boost team productivity, track time, and gain valuable insights into employee activity with Insightful. Optimize remote and in-office work effortlessly.</td>
-      </tr>
-      <tr>
-        <td><a href="pricefy.html">Pricefy</a></td>
-        <td>AI Tools / Pricing</td>
-        <td>Optimize your pricing strategy, maximize revenue, and gain competitive insights with Pricefy's AI-powered platform. Dynamic pricing, competitor monitoring, and more.</td>
-      </tr>
-      <tr>
-        <td><a href="reactin.html">Reactin</a></td>
-        <td>AI Tools / Customer Feedback</td>
-        <td>Automate feedback collection, analyze customer sentiment, and gain actionable insights with Reactin. Improve products and services with AI-driven feedback.</td>
-      </tr>
-      <tr>
-        <td><a href="snitcher.html">Snitcher</a></td>
-        <td>Sales / Lead Generation</td>
-        <td>Uncover who visits your website, identify anonymous leads, and boost your sales pipeline with Snitcher. Transform website traffic into actionable sales opportunities.</td>
-      </tr>
-      <tr>
-        <td><a href="timelines.html">Timelines.ai</a></td>
-        <td>AI Tools / Communication</td>
-        <td>Manage all your WhatsApp and Telegram communications in a single shared inbox with Timelines.ai. Automate replies, collaborate with your team, and boost sales.</td>
-      </tr>
-      <tr>
-        <td><a href="uptimerobot.html">UptimeRobot</a></td>
-        <td>Web Tools / Monitoring</td>
-        <td>Monitor your websites, servers, and services 24/7 with UptimeRobot. Get instant alerts, detailed uptime reports, and ensure your online presence is always available.</td>
-      </tr>
-      <tr>
-        <td><a href="venly.html">Venly</a></td>
-        <td>Web3 / Blockchain</td>
-        <td>Integrate blockchain wallets, NFT marketplaces, and gaming APIs into your Web3 projects with Venly. Simplify blockchain development and user onboarding.</td>
-      </tr>
-      <tr>
-        <td><a href="warmupinbox.html">Warmup Inbox</a></td>
-        <td>Email Marketing / Deliverability</td>
-        <td>Improve your email deliverability and sender reputation with Warmup Inbox. Automate email warming, avoid spam filters, and ensure your emails reach the inbox.</td>
-      </tr>
-      <tr>
-        <td><a href="webinargeek.html">WebinarGeek</a></td>
-        <td>Marketing / Webinars</td>
-        <td>Host professional live, automated, and on-demand webinars with WebinarGeek. All-in-one platform for marketing, sales, and training.</td>
-      </tr>
-      <tr>
-        <td><a href="whitecream.html">Writecream</a></td>
-        <td>AI Tools / Content Creation</td>
-        <td>Generate high-quality blog posts, ad copy, social media content, and more with Writecream's AI writer. Overcome writer's block and automate your content creation.</td>
-      </tr>
-      <tr>
-        <td><a href="boomerangme.html">Boomerangme.cards</a></td>
-        <td>Marketing / Loyalty</td>
-        <td>Create and manage digital loyalty programs, gift cards, and discount coupons with Boomerangme.cards. Engage customers, drive repeat business, and boost sales.</td>
-      </tr>
-      <tr>
-        <td><a href="factors.html">Factors.ai</a></td>
-        <td>AI Tools / Analytics</td>
-        <td>Unlock your growth potential with Factors.ai. Our AI-powered platform provides deep revenue intelligence, customer journey analytics, and marketing attribution to drive smarter decisions.</td>
-      </tr>
-      <tr>
-        <td><a href="focal.html">Focal AI</a></td>
-        <td>Productivity / Focus</td>
-        <td>Boost your focus, eliminate distractions, and maximize productivity with Focal AI. Leverage intelligent AI to create an optimal work environment.</td>
-      </tr>
-      <tr>
-        <td><a href="geotargetly.html">Geotargetly</a></td>
-        <td>Web Tools / Geo-Targeting</td>
-        <td>Control website content and access based on user location with Geotargetly. Implement geo-targeting, geo-blocking, and IP redirection for personalized experiences.</td>
-      </tr>
-      <tr>
-        <td><a href="growthx.html">Growth-X</a></td>
-        <td>AI Tools / Business Growth</td>
-        <td>Accelerate your business growth with Growth-X. Leverage AI-powered sales, marketing, and operational automation to scale efficiently and maximize revenue.</td>
-      </tr>
-      <tr>
-        <td><a href="joiin.html">Joiin</a></td>
-        <td>Finance / Reporting</td>
-        <td>Simplify financial consolidation and reporting across multiple entities with Joiin. Get real-time, accurate group accounts and insights effortlessly.</td>
-      </tr>
-      <tr>
-        <td><a href="pointerpro.html">Pointerpro</a></td>
-        <td>Marketing / Lead Generation</td>
-        <td>Create engaging online quizzes, surveys, and assessments with Pointerpro. Generate leads, train employees, and gather valuable data effortlessly.</td>
-      </tr>
-      <tr>
-        <td><a href="supermonitoring.html">SuperMonitoring</a></td>
-        <td>Web Tools / Monitoring</td>
-        <td>Ensure your website and servers are always online with SuperMonitoring. Get instant downtime alerts, performance insights, and reliable uptime reports for your digital assets.</td>
-      </tr>
-      <tr>
-        <td><a href="auditfriendly.html">AuditFriendly</a></td>
-        <td>Finance / Compliance</td>
-        <td>Streamline your audit process and ensure seamless compliance with AuditFriendly. Our platform simplifies data collection, document management, and collaboration for effortless financial audits.</td>
-      </tr>
-      <tr>
-        <td><a href="beyourbest.html">Be Your Best</a></td>
-        <td>Personal Development / Coaching</td>
-        <td>Unlock your full potential with personalized coaching, expert resources, and actionable strategies. Be Your Best helps you achieve your personal and professional goals.</td>
-      </tr>
-      <tr>
-        <td><a href="bounceban.html">BounceBan</a></td>
-        <td>Email Marketing / Deliverability</td>
-        <td>Ensure your emails always reach the inbox by eliminating bounces and protecting your sender reputation with BounceBan. Advanced email verification and list cleaning.</td>
-      </tr>
-      <tr>
-        <td><a href="copymatic.html">Copymatic.ai</a></td>
-        <td>AI Tools / Content Creation</td>
-        <td>Generate high-quality content, marketing copy, blog posts, and more in seconds with Copymatic.ai. Boost productivity and scale your content creation effortlessly.</td>
-      </tr>
-      <tr>
-        <td><a href="jobboardly.html">Jobboardly</a></td>
-        <td>Web Tools / Job Boards</td>
-        <td>Create and manage your own professional niche job board effortlessly with Jobboardly. Attract top talent, connect employers, and build a thriving community.</td>
-      </tr>
-      <tr>
-        <td><a href="neulink.html">Nuelink</a></td>
-        <td>Marketing / Social Media</td>
-        <td>Automate your social media publishing, curate content, and grow your audience effortlessly with Nuelink. Schedule posts, analyze performance, and manage all your social channels in one place.</td>
-      </tr>
-      <tr>
-        <td><a href="relevance.html">Relevance AI</a></td>
-        <td>AI Tools / Data Insights</td>
-        <td>Unlock the true value of your data with Relevance AI. Build intelligent search, personalize recommendations, and gain actionable insights to drive better user experiences and business outcomes.</td>
-      </tr>
-      <tr>
-        <td><a href="videogen.html">Videogen.io</a></td>
-        <td>AI Tools / Video Creation</td>
-        <td>Transform your text into stunning videos with AI. Videogen.io simplifies video creation, allowing you to generate professional-quality content for marketing, education, and more, effortlessly.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="program-grid" id="programGrid"></div>
   <script>
-    // Sorting and searching logic
-    const table = document.getElementById('programTable');
-    const headers = table.querySelectorAll('th');
-    let sortCol = null;
-    let sortAsc = true;
-    headers.forEach((th, idx) => {
-      th.addEventListener('click', () => {
-        if (sortCol === idx) sortAsc = !sortAsc;
-        else { sortCol = idx; sortAsc = true; }
-        headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
-        th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
-        sortTable(idx, sortAsc);
-      });
+    // --- Data extraction from table rows (manually migrated for new UI) ---
+    const programs = [
+      { name: "AgentX", url: "agentx.html", category: "AI Tools", desc: "Build powerful AI agents and multi-agent teams in under 60 seconds. No coding required. Automate workflows with ChatGPT-4, Claude 3, Gemini. Start free trial." },
+      { name: "ChatBot", url: "chatbot.html", category: "AI Tools", desc: "Build powerful AI chatbots for your website in minutes. 24/7 customer support, lead generation, sales automation. No coding required. Free 14-day trial." },
+      { name: "Coolors", url: "coolors.html", category: "Design Tools", desc: "Generate beautiful color palettes instantly with Coolors. The fastest color scheme generator for designers, artists, and developers. Thousands of perfect palettes await!" },
+      { name: "Getimg", url: "getimg.html", category: "AI Tools", desc: "Generate stunning AI art, edit photos with AI, and unleash your creativity with Getimg.ai. Text-to-image, inpainting, outpainting, and more." },
+      { name: "Hepatoburn", url: "hepatoburn.html", category: "Health & Wellness", desc: "Optimize liver function, boost metabolism, and accelerate fat burning with Hepatoburn. This powerful supplement supports detoxification and healthy weight management." },
+      { name: "LiveChat", url: "livechat.html", category: "Customer Support", desc: "Increase online sales by 25% with LiveChat®. Professional live chat software trusted by 35,000+ companies. Free 14-day trial, no credit card required." },
+      { name: "Mitolyn", url: "mitolyn.html", category: "Health & Wellness", desc: "Unlock peak energy, mental clarity, and cellular health with Mitolyn. This revolutionary supplement targets mitochondria for optimal vitality and anti-aging benefits." },
+      { name: "Mkdirs", url: "mkdirs.html", category: "Web Development", desc: "Build your directory website in 30 minutes with AI. Complete Next.js boilerplate with payments, CMS, blog, authentication & more. Used by 260+ makers." },
+      { name: "Rewardful", url: "rewardful.html", category: "Marketing", desc: "Launch and manage affiliate and referral programs for your SaaS business with Rewardful. Integrate with Stripe, Paddle, and more. Grow your revenue effortlessly." },
+      { name: "Syllaby", url: "syllaby.html", category: "AI Tools", desc: "Generate engaging video scripts, blog outlines, and social media content in minutes with Syllaby. Leverage AI to streamline your content workflow. Start your free trial today." },
+      { name: "Twixify", url: "twixify.html", category: "AI Tools", desc: "Effortlessly edit videos, add AI effects, and generate captivating content with Twixify. Streamline your video production with intelligent automation. Start free today." },
+      { name: "Zarla", url: "zarla.html", category: "Design Tools", desc: "Design professional logos, create stunning brand identities, and build your online presence with Zarla's AI-powered platform. Fast, free, and easy." },
+      { name: "Pollo.ai", url: "pollo.html", category: "AI Tools", desc: "Generate high-converting social media posts, ad copy, emails, and more with Pollo.ai. Automate your marketing content creation with advanced AI." },
+      { name: "Ataraxis Management", url: "ataraxis.html", category: "Productivity", desc: "Hire dedicated virtual assistants from Ataraxis Management to streamline your tasks, boost productivity, and scale your business. Get expert support for administrative, marketing, and technical needs." },
+      { name: "Fireflies.ai", url: "fireflies.html", category: "Productivity", desc: "Automate your meeting notes, transcriptions, and summaries with Fireflies.ai. Record, transcribe, and analyze voice conversations instantly." },
+      { name: "HeyGen", url: "heygen.html", category: "AI Tools", desc: "Generate professional videos with AI avatars and realistic voices in minutes. HeyGen simplifies video creation for marketing, training, and more." },
+      { name: "HyperWrite AI", url: "hyperwrite.html", category: "AI Tools", desc: "Generate high-quality content, write faster, and overcome writer's block with HyperWrite AI. Your intelligent assistant for essays, emails, articles, and more." },
+      { name: "Mubert", url: "mubert.html", category: "AI Tools", desc: "Generate unique, royalty-free music for your projects with Mubert's AI music generator. Perfect for videos, podcasts, apps, and more." },
+      { name: "Questmate", url: "questmate.html", category: "Productivity", desc: "Create powerful forms, checklists, and automated workflows with Questmate. Streamline operations, collect data, and boost efficiency without code." },
+      { name: "Akool", url: "akool.html", category: "AI Tools", desc: "Generate hyper-realistic AI avatars, videos, and images with Akool. The ultimate AI content creation platform for marketing, education, and entertainment." },
+      { name: "QR Code Developer", url: "qrcodedeveloper.html", category: "Marketing", desc: "Generate dynamic QR codes for marketing, business, and personal use. Track scans, manage campaigns, and unlock powerful analytics with QR Code Developer." },
+      { name: "Algomo", url: "algomo.html", category: "AI Tools", desc: "Automate customer support, generate leads, and enhance user experience with Algomo's AI chatbot platform. Deploy intelligent chatbots across all channels." },
+      { name: "Easy Month End", url: "easymonthend.html", category: "Finance", desc: "Streamline your month-end close process, simplify bookkeeping, and gain financial clarity with Easy Month End. Designed for small businesses and accountants." },
+      { name: "Email List Verify", url: "emaillistverify.html", category: "Email Marketing", desc: "Improve your email marketing ROI by cleaning your email lists with Email List Verify. Remove invalid, bounced, and spam trap emails to boost deliverability and sender reputation." },
+      { name: "GetReditus", url: "getreditus.html", category: "Marketing", desc: "Launch and scale your affiliate and referral programs with ease using GetReditus. Automate tracking, payouts, and partner management to boost your revenue." },
+      { name: "GrapeLeads", url: "grapeleads.html", category: "AI Tools", desc: "Discover, engage, and convert leads effortlessly with GrapeLeads. Leverage AI for targeted lead generation, automated outreach, and boosted sales." },
+      { name: "iCompass", url: "icompass.html", category: "AI Tools", desc: "Gain competitive advantage with iCompass's AI-powered market intelligence. Analyze trends, track competitors, and optimize your business strategy effortlessly." },
+      { name: "Insightful", url: "insightful.html", category: "Productivity", desc: "Boost team productivity, track time, and gain valuable insights into employee activity with Insightful. Optimize remote and in-office work effortlessly." },
+      { name: "Pricefy", url: "pricefy.html", category: "AI Tools", desc: "Optimize your pricing strategy, maximize revenue, and gain competitive insights with Pricefy's AI-powered platform. Dynamic pricing, competitor monitoring, and more." },
+      { name: "Reactin", url: "reactin.html", category: "AI Tools", desc: "Automate feedback collection, analyze customer sentiment, and gain actionable insights with Reactin. Improve products and services with AI-driven feedback." },
+      { name: "Snitcher", url: "snitcher.html", category: "Sales", desc: "Uncover who visits your website, identify anonymous leads, and boost your sales pipeline with Snitcher. Transform website traffic into actionable sales opportunities." },
+      { name: "Timelines.ai", url: "timelines.html", category: "AI Tools", desc: "Manage all your WhatsApp and Telegram communications in a single shared inbox with Timelines.ai. Automate replies, collaborate with your team, and boost sales." },
+      { name: "UptimeRobot", url: "uptimerobot.html", category: "Web Tools", desc: "Monitor your websites, servers, and services 24/7 with UptimeRobot. Get instant alerts, detailed uptime reports, and ensure your online presence is always available." },
+      { name: "Venly", url: "venly.html", category: "Web3", desc: "Integrate blockchain wallets, NFT marketplaces, and gaming APIs into your Web3 projects with Venly. Simplify blockchain development and user onboarding." },
+      { name: "Warmup Inbox", url: "warmupinbox.html", category: "Email Marketing", desc: "Improve your email deliverability and sender reputation with Warmup Inbox. Automate email warming, avoid spam filters, and ensure your emails reach the inbox." },
+      { name: "WebinarGeek", url: "webinargeek.html", category: "Marketing", desc: "Host professional live, automated, and on-demand webinars with WebinarGeek. All-in-one platform for marketing, sales, and training." },
+      { name: "Writecream", url: "whitecream.html", category: "AI Tools", desc: "Generate high-quality blog posts, ad copy, social media content, and more with Writecream's AI writer. Overcome writer's block and automate your content creation." },
+      { name: "Boomerangme.cards", url: "boomerangme.html", category: "Marketing", desc: "Create and manage digital loyalty programs, gift cards, and discount coupons with Boomerangme.cards. Engage customers, drive repeat business, and boost sales." },
+      { name: "Factors.ai", url: "factors.html", category: "AI Tools", desc: "Unlock your growth potential with Factors.ai. Our AI-powered platform provides deep revenue intelligence, customer journey analytics, and marketing attribution to drive smarter decisions." },
+      { name: "Focal AI", url: "focal.html", category: "Productivity", desc: "Boost your focus, eliminate distractions, and maximize productivity with Focal AI. Leverage intelligent AI to create an optimal work environment." },
+      { name: "Geotargetly", url: "geotargetly.html", category: "Web Tools", desc: "Control website content and access based on user location with Geotargetly. Implement geo-targeting, geo-blocking, and IP redirection for personalized experiences." },
+      { name: "Growth-X", url: "growthx.html", category: "AI Tools", desc: "Accelerate your business growth with Growth-X. Leverage AI-powered sales, marketing, and operational automation to scale efficiently and maximize revenue." },
+      { name: "Joiin", url: "joiin.html", category: "Finance", desc: "Simplify financial consolidation and reporting across multiple entities with Joiin. Get real-time, accurate group accounts and insights effortlessly." },
+      { name: "Pointerpro", url: "pointerpro.html", category: "Marketing", desc: "Create engaging online quizzes, surveys, and assessments with Pointerpro. Generate leads, train employees, and gather valuable data effortlessly." },
+      { name: "SuperMonitoring", url: "supermonitoring.html", category: "Web Tools", desc: "Ensure your website and servers are always online with SuperMonitoring. Get instant downtime alerts, performance insights, and reliable uptime reports for your digital assets." },
+      { name: "AuditFriendly", url: "auditfriendly.html", category: "Finance", desc: "Streamline your audit process and ensure seamless compliance with AuditFriendly. Our platform simplifies data collection, document management, and collaboration for effortless financial audits." },
+      { name: "Be Your Best", url: "beyourbest.html", category: "Personal Development", desc: "Unlock your full potential with personalized coaching, expert resources, and actionable strategies. Be Your Best helps you achieve your personal and professional goals." },
+      { name: "BounceBan", url: "bounceban.html", category: "Email Marketing", desc: "Ensure your emails always reach the inbox by eliminating bounces and protecting your sender reputation with BounceBan. Advanced email verification and list cleaning." },
+      { name: "Copymatic.ai", url: "copymatic.html", category: "AI Tools", desc: "Generate high-quality content, marketing copy, blog posts, and more in seconds with Copymatic.ai. Boost productivity and scale your content creation effortlessly." },
+      { name: "Jobboardly", url: "jobboardly.html", category: "Web Tools", desc: "Create and manage your own professional niche job board effortlessly with Jobboardly. Attract top talent, connect employers, and build a thriving community." },
+      { name: "Nuelink", url: "neulink.html", category: "Marketing", desc: "Automate your social media publishing, curate content, and grow your audience effortlessly with Nuelink. Schedule posts, analyze performance, and manage all your social channels in one place." },
+      { name: "Relevance AI", url: "relevance.html", category: "AI Tools", desc: "Unlock the true value of your data with Relevance AI. Build intelligent search, personalize recommendations, and gain actionable insights to drive better user experiences and business outcomes." },
+      { name: "Videogen.io", url: "videogen.html", category: "AI Tools", desc: "Transform your text into stunning videos with AI. Videogen.io simplifies video creation, allowing you to generate professional-quality content for marketing, education, and more, effortlessly." },
+    ];
+
+    // --- Build unique, sorted category list ---
+    const categories = Array.from(new Set(programs.map(p => p.category))).sort();
+    const categorySelect = document.getElementById('categorySelect');
+    categories.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat;
+      categorySelect.appendChild(opt);
     });
-    function sortTable(col, asc) {
-      const tbody = table.querySelector('tbody');
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      rows.sort((a, b) => {
-        const ta = a.children[col].innerText.toLowerCase();
-        const tb = b.children[col].innerText.toLowerCase();
-        if (ta < tb) return asc ? -1 : 1;
-        if (ta > tb) return asc ? 1 : -1;
-        return 0;
+
+    // --- Render cards ---
+    const grid = document.getElementById('programGrid');
+    function renderCards() {
+      const selectedCat = categorySelect.value;
+      const searchVal = document.getElementById('searchInput').value.toLowerCase();
+      grid.innerHTML = '';
+      programs.filter(p =>
+        (selectedCat === 'all' || p.category === selectedCat) &&
+        (p.name.toLowerCase().includes(searchVal) || p.desc.toLowerCase().includes(searchVal))
+      ).forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'program-card';
+        card.onclick = () => window.location.href = p.url;
+        card.innerHTML = `<div class="program-title">${p.name}</div><div class="program-desc">${p.desc}</div>`;
+        grid.appendChild(card);
       });
-      rows.forEach(row => tbody.appendChild(row));
     }
-    // Search logic
-    document.getElementById('searchInput').addEventListener('input', function() {
-      const val = this.value.toLowerCase();
-      table.querySelectorAll('tbody tr').forEach(row => {
-        row.style.display = Array.from(row.children).some(td => td.innerText.toLowerCase().includes(val)) ? '' : 'none';
-      });
-    });
+    categorySelect.addEventListener('change', renderCards);
+    document.getElementById('searchInput').addEventListener('input', renderCards);
+    renderCards();
   </script>
 </body>
 </html> 
